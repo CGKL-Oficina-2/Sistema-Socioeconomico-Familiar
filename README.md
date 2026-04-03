@@ -1,7 +1,5 @@
-# 📄 Sistema Socioeconômico das Famílias
-## Trabalho da matéria *Oficina de Integração 2*  
-### Projeto de Extensão ELLP  
-
+# Sistema Socioeconômico das Famílias 📄 
+### Trabalho da matéria *Oficina de Integração 2* - Projeto de Extensão ELLP  
 ---
 
 ## 📌 1. Descrição do Projeto
