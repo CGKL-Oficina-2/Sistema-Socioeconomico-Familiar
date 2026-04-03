@@ -27,7 +27,7 @@ Desenvolver um sistema que possibilite o levantamento socioeconômico de forma *
 
 ## 👥 3. Equipe
 
-| Nome | Função |
+| Nome | Papel |
 |------|--------|
 | Carlos Hereman | Desenvolvedor |
 | Gabriel Sarti | Desenvolvedor |
