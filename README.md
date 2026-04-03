@@ -2,193 +2,242 @@
 ### Trabalho da matéria *Oficina de Integração 2* - Projeto de Extensão ELLP  
 ---
 
-## 📌 1. Descrição do Projeto
+## 📌 1. Introdução
 
-Este projeto tem como objetivo o desenvolvimento de um sistema para **coleta, armazenamento e análise de dados socioeconômicos** das famílias atendidas pelo projeto de extensão ELLP (Ensino Lúdico de Lógica e Programação).
+O presente projeto tem como objetivo o desenvolvimento de um sistema voltado ao levantamento socioeconômico das famílias atendidas pelo projeto de extensão ELLP (Ensino Lúdico de Lógica e Programação) da UTFPR, Coordenado pelo Prof. Antonio Carlos Fernandes da Silva.
 
-A solução proposta permitirá a obtenção de dados estruturados que subsidiem decisões estratégicas, melhoria das oficinas e ampliação do impacto social do projeto.
+A proposta busca estruturar a coleta de dados relevantes, permitindo análises consistentes que contribuam para a melhoria das ações extensionistas e tomada de decisão baseada em dados.
 
 ---
 
-## 🎯 2. Objetivos
+## 🎯 2. Objetivo do Projeto
 
-### 2.1 Objetivo Geral
-Desenvolver um sistema que possibilite o levantamento socioeconômico de forma **segura, anônima e estruturada**.
-
-### 2.2 Objetivos Específicos
-- Permitir o cadastro de dados socioeconômicos das famílias;
-- Garantir anonimato no processo de coleta;
-- Possibilitar o cadastro de escolas da região;
-- Relacionar famílias às escolas;
-- Disponibilizar visualização e análise de dados;
-- Gerar relatórios para apoio à tomada de decisão.
+Desenvolver uma solução computacional capaz de coletar, armazenar e analisar informações socioeconômicas de forma segura, estruturada e, quando necessário, anônima.
 
 ---
 
 ## 👥 3. Equipe
 
-| Nome | Papel |
-|------|--------|
-| Carlos Hereman | Desenvolvedor |
-| Gabriel Sarti | Desenvolvedor |
-| Kauan Pedreira | Desenvolvedor |
-| Luccas Hessel | Desenvolvedor |
+| Nome | Papel | Responsabilidade |
+|------|--------|----------------|
+| Carlos Hereman | Desenvolvedor | Back-End / API |
+| Gabriel Sarti | Desenvolvedor | Front-End |
+| Kauan Pedreira | Desenvolvedor | Banco de Dados |
+| Luccas Hessel | Desenvolvedor | Testes e Qualidade |
 
 ---
 
-## 🧩 4. Requisitos Funcionais
+## 🧩 4. Escopo do Sistema
 
-### RF01 – Cadastro Socioeconômico
-- Permitir preenchimento de formulário pelas famílias;
-- Possibilidade de preenchimento anônimo;
-- Coleta de dados como:
-  - Renda familiar;
-  - Número de moradores;
-  - Escolaridade;
-  - Acesso à internet;
-  - Tipo de moradia.
+### ✅ O sistema DEVE:
+- Permitir o cadastro de dados socioeconômicos das famílias;
+- Possibilitar o preenchimento anônimo dos dados;
+- Realizar o cadastro de escolas participantes;
+- Permitir associação entre famílias e escolas;
+- Disponibilizar visualização de dados agregados;
+- Gerar relatórios para análise.
 
-### RF02 – Cadastro de Escolas
-- Registrar escolas participantes;
-- Armazenar nome, tipo e localização.
-
-### RF03 – Associação Família-Escola
-- Permitir vincular famílias a escolas (opcional).
-
-### RF04 – Visualização de Dados
-- Exibir dados agregados;
-- Filtros por escola, renda e outros critérios.
-
-### RF05 – Geração de Relatórios
-- Exportação de dados em formatos como CSV ou PDF.
+### ❌ O sistema NÃO deve:
+- Armazenar dados pessoais sensíveis identificáveis;
+- Integrar com sistemas externos nesta versão;
+- Implementar autenticação complexa fora do escopo inicial.
 
 ---
 
-## ⚙️ 5. Requisitos Não Funcionais
+## 📋 5. Requisitos
 
-- RNF01: Interface simples e acessível;
-- RNF02: Sistema responsivo (mobile e desktop);
-- RNF03: Garantia de anonimato;
-- RNF04: Segurança dos dados (criptografia);
-- RNF05: Alta disponibilidade;
-- RNF06: Escalabilidade.
+### 5.1 Requisitos Funcionais
+
+- **RF01**: Permitir cadastro socioeconômico de famílias;
+- **RF02**: Permitir cadastro de escolas;
+- **RF03**: Associar famílias a escolas (opcional);
+- **RF04**: Exibir dados em formato de dashboard;
+- **RF05**: Exportar relatórios em formatos estruturados.
+
+---
+
+### 5.2 Requisitos Não Funcionais
+
+- **RNF01**: Interface responsiva;
+- **RNF02**: Garantia de segurança dos dados;
+- **RNF03**: Alta disponibilidade;
+- **RNF04**: Facilidade de uso para usuários leigos;
+- **RNF05**: Escalabilidade do sistema.
+
+---
+
+### 5.3 Regras de Negócio
+
+- **RN01**: O preenchimento do formulário pode ser anônimo;
+- **RN02**: A associação com escola é opcional;
+- **RN03**: Os dados devem ser utilizados apenas de forma agregada;
+- **RN04**: Não é permitido armazenar dados sensíveis identificáveis;
+- **RN05**: Escolas devem estar previamente cadastradas.
 
 ---
 
 ## 🏗️ 6. Arquitetura do Sistema
 
-O sistema seguirá uma arquitetura em camadas:
+### 6.1 Visão Geral
 
-- **Front-End (Apresentação)**  
-  Responsável pela interface com o usuário.
-
-- **Back-End (Aplicação)**  
-  Responsável pela lógica de negócio e APIs.
-
-- **Banco de Dados (Persistência)**  
-  Responsável pelo armazenamento dos dados.
-
-### 📊 Diagrama de Arquitetura
-*(Inserir imagem ou link do diagrama aqui)*
+O sistema será desenvolvido utilizando arquitetura em camadas, separando responsabilidades entre interface, lógica de negócio e persistência de dados.
 
 ---
 
-## 🧪 7. Estratégia de Testes
+### 6.2 Diagrama de Arquitetura
 
-Serão adotadas as seguintes abordagens:
+```bash
+[ Front-End ] ---> [ Back-End API ] ---> [ Banco de Dados ]
+(Substituir por diagrama gráfico posteriormente)
+```
 
-- Testes Unitários: validação de funções e serviços;
-- Testes de Integração: comunicação entre API e banco de dados;
-- Testes End-to-End: simulação do fluxo completo do usuário;
-- Cobertura de testes como métrica de qualidade.
+### 6.3 Padrões Arquiteturais
+
+- Arquitetura em Camadas  
+- Padrão REST  
+- MVC (Model-View-Controller)  
+
+---
+
+## 🗄️ 7. Modelo de Dados
+
+### 7.1 Entidades
+- Família  
+- Escola  
+
+### 7.2 Relacionamentos
+- Uma família pode estar associada a uma escola  
+
+### 7.3 Diagrama ER (DER)
+
+*(Inserir diagrama ER aqui)*
 
 ---
 
 ## 💻 8. Tecnologias Utilizadas
 
 ### Front-End
-- HTML, CSS, JavaScript
-- (Opcional: React ou Vue)
+- HTML  
+- CSS  
+- JavaScript  
+- *(Opcional: React)*  
 
 ### Back-End
-- Node.js com Express *(ou Java com Spring Boot)*
+- Node.js com Express  
 
 ### Banco de Dados
-- PostgreSQL *(ou MongoDB)*
+- PostgreSQL  
 
 ### Ferramentas
-- GitHub (versionamento)
-- Kanban (gerenciamento de tarefas)
-- Postman (testes de API)
-
----
-## 🗂️ 9. Estrutura do Projeto
-
-/project-root
-│
-├── frontend/
-├── backend/
-├── database/
-├── docs/
-├── tests/
-├── README.md
-└── package.json
-
+- GitHub  
+- Postman  
+- Kanban  
 
 ---
 
-## 📅 10. Cronograma
+## 🧪 9. Estratégia de Testes
 
-| Etapa | Descrição | Período |
-|------|----------|--------|
-| Planejamento | Definição de requisitos e arquitetura | Semana 1–2 |
-| Sprint 1 | Funcionalidades básicas | Semana 3–5 |
-| Sprint 2 | Funcionalidades avançadas e testes | Semana 6–8 |
-| Revisão | Ajustes finais | Semana 9 |
+### 9.1 Tipos de Teste
+- Testes Unitários  
+- Testes de Integração  
+- Testes End-to-End  
 
----
+### 9.2 Ferramentas
+- Jest  
+- Supertest  
 
-## 🔄 11. Metodologia de Desenvolvimento
-
-O projeto será desenvolvido utilizando a metodologia **Scrum**, com:
-
-- 2 Sprints;
-- Backlog definido na fase de planejamento;
-- Uso de issues no GitHub;
-- Quadro Kanban para acompanhamento.
+### 9.3 Cobertura de Testes
+- Meta mínima de 70% de cobertura  
 
 ---
 
-## 📌 12. Backlog Inicial (Exemplo)
+## 📊 10. Gerenciamento do Projeto
 
-- Criar estrutura do projeto
-- Implementar API de cadastro de famílias
-- Implementar cadastro de escolas
-- Criar interface do formulário
-- Implementar persistência de dados
-- Criar dashboard básico
-- Implementar testes automatizados
+### 10.1 Metodologia
+- Scrum (2 Sprints)  
+
+### 10.2 Organização do Backlog
+- Funcionalidades organizadas como Issues no GitHub  
+
+### 10.3 Kanban
+*(Inserir link do quadro Kanban)*
 
 ---
 
-## 🚀 13. Como Executar o Projeto
+## 📅 11. Cronograma Detalhado
 
-### Pré-requisitos
-- Node.js instalado
-- Banco de dados configurado
+| Sprint   | Atividades                                   | Entregas          |
+|----------|----------------------------------------------|-------------------|
+| Sprint 1 | Estrutura inicial, cadastro e persistência   | API funcional     |
+| Sprint 2 | Dashboard, testes e refinamentos             | Sistema completo  |
 
-### Passos
+---
+
+## 🗂️ 12. Estrutura do Repositório
 
 ```bash
-# Clonar repositório
-git clone <url>
+project-root/
+│
+├── frontend/      # Interface do usuário
+├── backend/       # API e regras de negócio
+├── database/      # Scripts e modelos de dados
+├── tests/         # Testes automatizados
+├── docs/          # Documentação adicional
+└── README.md
+```
+---
 
-# Acessar pasta
-cd projeto
+## ⚙️ 13. Configuração do Ambiente
 
+```bash
 # Instalar dependências
 npm install
 
-# Rodar servidor
+# Configurar variáveis de ambiente
+cp .env.example .env
+
+# Executar o projeto
 npm start
-## 🗂️ 9. Estrutura do Projeto
+```
+---
+
+## 🚀 14. Execução do Projeto
+
+```bash
+# Executar backend
+npm run dev
+
+# Executar frontend
+npm start
+```
+---
+
+## 🔄 15. Estratégia de Versionamento
+
+- **main** → versão estável  
+- **develop** → integração de funcionalidades  
+- **feature/** → desenvolvimento de novas funcionalidades  
+
+### Padrão de commits
+
+```text
+feat: nova funcionalidade
+fix: correção de bug
+docs: documentação
+```
+---
+
+## 📎 16. Evidências do Planejamento
+
+- Issues documentadas no GitHub  
+- Casos de teste definidos  
+- Diagramas de arquitetura  
+- Modelo de dados (DER)  
+
+---
+
+## 📌 17. Considerações Finais
+
+Este projeto integra conhecimentos adquiridos ao longo do curso de Engenharia de Software, aplicando práticas modernas de desenvolvimento em um contexto real de impacto social.
+
+A proposta busca não apenas atender aos requisitos acadêmicos, mas também contribuir efetivamente para a melhoria das ações do projeto de extensão ELLP.
