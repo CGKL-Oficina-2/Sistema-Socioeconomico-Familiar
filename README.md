@@ -4,7 +4,7 @@
 
 ## 📌 1. Descrição do Projeto
 
-Este projeto tem como objetivo o desenvolvimento de um sistema web para **coleta, armazenamento e análise de dados socioeconômicos** das famílias atendidas pelo projeto de extensão ELLP (Ensino Lúdico de Lógica e Programação).
+Este projeto tem como objetivo o desenvolvimento de um sistema para **coleta, armazenamento e análise de dados socioeconômicos** das famílias atendidas pelo projeto de extensão ELLP (Ensino Lúdico de Lógica e Programação).
 
 A solução proposta permitirá a obtenção de dados estruturados que subsidiem decisões estratégicas, melhoria das oficinas e ampliação do impacto social do projeto.
 
