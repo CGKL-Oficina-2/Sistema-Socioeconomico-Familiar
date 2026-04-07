@@ -82,16 +82,6 @@ Desenvolver uma solução computacional capaz de coletar, armazenar e analisar i
 
 ---
 
-### 5.3 Regras de Negócio
-
-- **RN01**: O preenchimento do formulário pode ser anônimo;
-- **RN02**: A associação com escola é opcional;
-- **RN03**: Os dados devem ser utilizados apenas de forma agregada;
-- **RN04**: Não é permitido armazenar dados sensíveis identificáveis;
-- **RN05**: Escolas devem estar previamente cadastradas.
-
----
-
 ## 🏗️ 6. Arquitetura do Sistema
 
 ### 6.1 Visão Geral
@@ -133,21 +123,21 @@ O sistema será desenvolvido utilizando arquitetura em camadas, separando respon
 ## 💻 8. Tecnologias Utilizadas
 
 ### Front-End
-- HTML  
-- CSS  
-- JavaScript  
-- *(Opcional: React)*  
+
+React.js
+HTML5
+CSS3
+Tailwind CSS (avaliar)
 
 ### Back-End
 - Node.js com Express  
 
 ### Banco de Dados
-- PostgreSQL  
+- PostgreSQL  ou MongoDB
 
 ### Ferramentas
-- GitHub  
-- Postman  
-- Kanban  
+- GitHub
+- GitHub Projects  
 
 ---
 
@@ -176,16 +166,12 @@ O sistema será desenvolvido utilizando arquitetura em camadas, separando respon
 - Funcionalidades organizadas como Issues no GitHub  
 
 ### 10.3 Kanban
-*(Inserir link do quadro Kanban)*
+*(https://github.com/orgs/CGKL-Oficina-2/projects/1)*
 
 ---
 
 ## 📅 11. Cronograma Detalhado
 
-| Sprint   | Atividades                                   | Entregas          |
-|----------|----------------------------------------------|-------------------|
-| Sprint 1 | Estrutura inicial, cadastro e persistência   | API funcional     |
-| Sprint 2 | Dashboard, testes e refinamentos             | Sistema completo  |
 
 ---
 
@@ -228,31 +214,7 @@ npm start
 ```
 ---
 
-## 🔄 15. Estratégia de Versionamento
-
-- **main** → versão estável  
-- **develop** → integração de funcionalidades  
-- **feature/** → desenvolvimento de novas funcionalidades  
-
-### Padrão de commits
-
-```text
-feat: nova funcionalidade
-fix: correção de bug
-docs: documentação
-```
----
-
-## 📎 16. Evidências do Planejamento
-
-- Issues documentadas no GitHub  
-- Casos de teste definidos  
-- Diagramas de arquitetura  
-- Modelo de dados (DER)  
-
----
-
-## 📌 17. Considerações Finais
+## 📌 15. Considerações Finais
 
 Este projeto integra conhecimentos adquiridos ao longo do curso de Engenharia de Software, aplicando práticas modernas de desenvolvimento em um contexto real de impacto social.
 
