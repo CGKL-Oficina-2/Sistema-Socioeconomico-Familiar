@@ -27,20 +27,58 @@ Desenvolver uma solução computacional capaz de coletar, armazenar e analisar i
 
 ---
 
-## 🧩 4. Escopo do Sistema
+## 🧩 4. Fluxo Geral de Operação
 
-### ✅ O sistema DEVE:
-- Permitir o cadastro de dados socioeconômicos das famílias;
-- Possibilitar o preenchimento anônimo dos dados;
-- Realizar o cadastro de escolas participantes;
-- Permitir associação entre famílias e escolas;
-- Disponibilizar visualização de dados agregados;
-- Gerar relatórios para análise.
+### 🔐 Autenticação
+- Usuários autorizados realizam login no sistema  
+- O acesso é controlado por níveis de permissão (ex: administrador, voluntário)  
 
-### ❌ O sistema NÃO deve:
-- Armazenar dados pessoais sensíveis identificáveis;
-- Integrar com sistemas externos nesta versão;
-- Implementar autenticação complexa fora do escopo inicial.
+---
+
+### 🏫 Cadastro de Escolas
+- Administradores podem cadastrar, editar, consultar e excluir escolas  
+- As escolas servem como referência para organização dos dados coletados  
+
+---
+
+### 📝 Preenchimento do Formulário
+- O formulário socioeconômico é disponibilizado ao usuário  
+- O preenchimento pode ser:
+  - Anônimo  
+  - Identificado  
+- Os dados são validados antes do envio  
+
+---
+
+### 💾 Persistência dos Dados
+- As respostas são armazenadas no banco de dados  
+- Garantindo integridade e consistência das informações  
+
+---
+
+### 🔍 Gerenciamento e Consulta
+- Usuários autorizados podem visualizar os dados coletados  
+- O sistema permite aplicação de filtros por critérios específicos (ex: escola, renda)  
+
+---
+
+### 📊 Análise de Dados
+- O sistema processa os dados e apresenta:
+  - Estatísticas  
+  - Indicadores  
+  - Visualizações gráficas  
+
+---
+
+### 📤 Exportação
+- Os dados podem ser exportados em formatos estruturados (CSV/Excel)  
+- Facilitando análises externas  
+
+---
+
+### 🧾 Auditoria e Controle
+- O sistema registra operações relevantes (logs)  
+- Garantindo rastreabilidade e controle de uso  
 
 ---
 
