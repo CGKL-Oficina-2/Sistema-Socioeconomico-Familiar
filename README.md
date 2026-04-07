@@ -62,7 +62,7 @@ Desenvolver uma solução computacional capaz de coletar, armazenar e analisar i
 | RF10 | Gerar relatórios consolidados;                                                     | 🟢 Baixa   |
 | RF11 | Exportar dados em formato CSV ou Excel;                                            | 🟡 Média   |
 | RF12 | Implementar autenticação de usuários;                                              | 🔴 Alta    |
-| RF13 | Definir níveis de acesso: Administrador: acesso total Voluntário: visualização e apoio na coleta | 🟡 Média   |
+| RF13 | Definir níveis de acesso: Administrador: acesso total; Voluntário: visualização e apoio na coleta | 🟡 Média   |
 | RF14 | Registrar ações básicas no sistema (log de operações).                             | 🟢 Baixa   |
 
 ---
