@@ -48,21 +48,37 @@ Desenvolver uma solução computacional capaz de coletar, armazenar e analisar i
 
 ### 5.1 Requisitos Funcionais
 
-- **RF01**: Permitir cadastro socioeconômico de famílias;
-- **RF02**: Permitir cadastro de escolas;
-- **RF03**: Associar famílias a escolas (opcional);
-- **RF04**: Exibir dados em formato de dashboard;
-- **RF05**: Exportar relatórios em formatos estruturados.
+| ID   | Requisito Funcional                                                                 | Prioridade |
+|------|-------------------------------------------------------------------------------------|------------|
+| RF01 | Permitir o cadastro, edição, exclusão e consulta de escolas;                      | 🔴 Alta    |
+| RF02 | Permitir que o usuário selecione uma escola ao preencher o formulário;            | 🔴 Alta    |
+| RF03 | Disponibilizar formulário socioeconômico estruturado por seções;                  | 🔴 Alta    |
+| RF04 | Permitir preenchimento anônimo ou identificado;                                    | 🟡 Média   |
+| RF05 | Validar campos obrigatórios e tipos de dados (ex: renda numérica);                | 🔴 Alta    |
+| RF06 | Armazenar as respostas no banco de dados;                                          | 🔴 Alta    |
+| RF07 | Permitir visualização dos dados por usuários autorizados;                          | 🔴 Alta    |
+| RF08 | Permitir filtragem por escola, renda, localização e outros critérios;              | 🟡 Média   |
+| RF09 | Gerar gráficos (ex: distribuição de renda, acesso à internet);                     | 🟡 Média   |
+| RF10 | Gerar relatórios consolidados;                                                     | 🟢 Baixa   |
+| RF11 | Exportar dados em formato CSV ou Excel;                                            | 🟡 Média   |
+| RF12 | Implementar autenticação de usuários;                                              | 🔴 Alta    |
+| RF13 | Definir níveis de acesso: Administrador: acesso total Voluntário: visualização e apoio na coleta | 🟡 Média   |
+| RF14 | Registrar ações básicas no sistema (log de operações).                             | 🟢 Baixa   |
 
 ---
 
 ### 5.2 Requisitos Não Funcionais
 
-- **RNF01**: Interface responsiva;
-- **RNF02**: Garantia de segurança dos dados;
-- **RNF03**: Alta disponibilidade;
-- **RNF04**: Facilidade de uso para usuários leigos;
-- **RNF05**: Escalabilidade do sistema.
+| ID    | Requisito Não Funcional                                   | Prioridade |
+|-------|-----------------------------------------------------------|------------|
+| RNF01 | Sistema acessível via navegador web;                      | 🔴 Alta    |
+| RNF02 | Interface simples e intuitiva;                            | 🟡 Média   |
+| RNF03 | Garantia de segurança e confidencialidade dos dados;      | 🔴 Alta    |
+| RNF04 | Suporte ao anonimato;                                     | 🟡 Média   |
+| RNF05 | Tempo de resposta adequado;                               | 🟡 Média   |
+| RNF06 | Arquitetura organizada em camadas;                        | 🔴 Alta    |
+| RNF07 | Código versionado e documentado;                          | 🔴 Alta    |
+| RNF08 | Implementação de testes automatizados;                    | 🔴 Alta    |
 
 ---
 
