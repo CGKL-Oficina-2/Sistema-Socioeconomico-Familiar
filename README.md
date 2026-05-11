@@ -91,17 +91,16 @@ Desenvolver uma solução computacional capaz de coletar, armazenar e analisar i
 | RF01 | Permitir o cadastro, edição, exclusão e consulta de escolas;                      | 🔴 Alta    |
 | RF02 | Permitir que o usuário selecione uma escola ao preencher o formulário;            | 🔴 Alta    |
 | RF03 | Disponibilizar formulário socioeconômico estruturado por seções;                  | 🔴 Alta    |
-| RF04 | Permitir preenchimento anônimo ou identificado;                                    | 🟡 Média   |
+| RF04 | Permitir preenchimento anônimo ou identificado;                                    | 🔴 Alta   |
 | RF05 | Validar campos obrigatórios e tipos de dados (ex: renda numérica);                | 🔴 Alta    |
-| RF06 | Armazenar as respostas no banco de dados;                                          | 🔴 Alta    |
-| RF07 | Permitir visualização dos dados por usuários autorizados;                          | 🔴 Alta    |
-| RF08 | Permitir filtragem por escola, renda, localização e outros critérios;              | 🟡 Média   |
-| RF09 | Gerar gráficos (ex: distribuição de renda, acesso à internet);                     | 🟡 Média   |
-| RF10 | Gerar relatórios consolidados;                                                     | 🟢 Baixa   |
-| RF11 | Exportar dados em formato CSV ou Excel;                                            | 🟡 Média   |
-| RF12 | Implementar autenticação de usuários;                                              | 🔴 Alta    |
-| RF13 | Definir níveis de acesso: Administrador: acesso total; Voluntário: visualização e apoio na coleta | 🟡 Média   |
-| RF14 | Registrar ações básicas no sistema (log de operações).                             | 🟢 Baixa   |
+| RF06 | Permitir visualização dos dados por usuários autorizados;                          | 🔴 Alta    |
+| RF07 | Permitir filtragem por escola, renda, localização e outros critérios;              | 🟡 Média   |
+| RF08 | Gerar gráficos (ex: distribuição de renda, acesso à internet);                     | 🟡 Média   |
+| RF9 | Gerar relatórios consolidados;                                                     | 🟢 Baixa   |
+| RF10 | Exportar dados em formato CSV ou Excel;                                            | 🟢 Baixa   |
+| RF11 | Implementar autenticação de usuários;                                              | 🔴 Alta    |
+| RF12 | Definir níveis de acesso: Administrador: acesso total; Voluntário: visualização e apoio na coleta | 🟡 Média   |
+| RF13 | Registrar ações básicas no sistema (log de operações).                             | 🟢 Baixa   |
 
 ---
 
