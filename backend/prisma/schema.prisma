@@ -1,0 +1,93 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  VOLUNTARIO
+}
+
+enum LogAction {
+  LOGIN
+  LOGOUT
+  CREATE
+  UPDATE
+  DELETE
+  EXPORT
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  role      Role     @default(VOLUNTARIO)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  logs Log[]
+
+  @@map("users")
+}
+
+model School {
+  id          Int      @id @default(autoincrement())
+  name        String
+  city        String
+  state       String
+  address     String
+  phone       String?
+  responsible String?
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  forms SocioeconomicForm[]
+
+  @@map("schools")
+}
+
+model SocioeconomicForm {
+  id                 Int      @id @default(autoincrement())
+  anonymous          Boolean  @default(false)
+  responsibleName    String?
+  cpf                String?
+  phone              String?
+  email              String?
+  schoolId           Int?
+  familyIncome       Float
+  residents          Int
+  internetAccess     Boolean  @default(false)
+  computerAccess     Boolean  @default(false)
+  govAssistance      Boolean  @default(false)
+  govAssistanceType  String?
+  observations       String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  school School? @relation(fields: [schoolId], references: [id])
+
+  @@map("socioeconomic_forms")
+}
+
+model Log {
+  id         Int       @id @default(autoincrement())
+  userId     Int?
+  userName   String?
+  action     LogAction
+  resource   String
+  resourceId Int?
+  details    String?
+  ip         String?
+  createdAt  DateTime  @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@map("logs")
+}
