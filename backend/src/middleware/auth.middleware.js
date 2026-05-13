@@ -3,48 +3,70 @@ const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
-const authenticate = async (req, res, next) => {
+async function authenticate(req, res, next) {
   try {
-    const authHeader = req.headers.authorization;
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({ error: 'Token não fornecido' });
+    const authorization = req.headers.authorization;
+
+    if (!authorization) {
+      return res.status(401).json({
+        error: 'Token não fornecido',
+      });
     }
 
-    const token = authHeader.substring(7);
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const [scheme, token] = authorization.split(' ');
+
+    if (scheme !== 'Bearer' || !token) {
+      return res.status(401).json({
+        error: 'Token não fornecido',
+      });
+    }
+
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
     const user = await prisma.user.findUnique({
-      where: { id: decoded.id },
-      select: { id: true, name: true, email: true, role: true, active: true },
+      where: {
+        id: decodedToken.id,
+      },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        role: true,
+      },
     });
 
-    if (!user || !user.active) {
-      return res.status(401).json({ error: 'Usuário inativo ou não encontrado' });
+    if (!user) {
+      return res.status(401).json({
+        error: 'Usuário não encontrado',
+      });
     }
 
-    req.user = user;
-    next();
+    req.user = {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+    };
+
+    return next();
   } catch (error) {
-    if (error.name === 'JsonWebTokenError') {
-      return res.status(401).json({ error: 'Token inválido' });
+    switch (error.name) {
+      case 'JsonWebTokenError':
+        return res.status(401).json({
+          error: 'Token inválido',
+        });
+
+      case 'TokenExpiredError':
+        return res.status(401).json({
+          error: 'Token expirado',
+        });
+
+      default:
+        return next(error);
     }
-    if (error.name === 'TokenExpiredError') {
-      return res.status(401).json({ error: 'Token expirado' });
-    }
-    next(error);
   }
-};
+}
 
-const authorize = (...roles) => {
-  return (req, res, next) => {
-    if (!req.user) {
-      return res.status(401).json({ error: 'Não autenticado' });
-    }
-    if (!roles.includes(req.user.role)) {
-      return res.status(403).json({ error: 'Acesso negado. Permissão insuficiente.' });
-    }
-    next();
-  };
+module.exports = {
+  authenticate,
 };
-
-module.exports = { authenticate, authorize };
