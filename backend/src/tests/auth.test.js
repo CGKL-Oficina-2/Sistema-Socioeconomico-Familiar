@@ -1,7 +1,6 @@
 const request = require('supertest');
-const app = require('../../app');
+const app = require('../app');
 
-// Mock Prisma
 jest.mock('@prisma/client', () => {
   const mockUser = {
     id: 1,

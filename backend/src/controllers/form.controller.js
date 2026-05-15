@@ -66,7 +66,6 @@ const create = async (req, res) => {
     if (data.residents) data.residents = parseInt(data.residents);
     if (data.familyIncome) data.familyIncome = parseFloat(data.familyIncome);
 
-    // If anonymous, clear personal data
     if (data.anonymous) {
       data.responsibleName = null;
       data.cpf = null;

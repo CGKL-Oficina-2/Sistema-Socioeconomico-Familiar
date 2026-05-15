@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../../app');
+const app = require('../app');
 const jwt = require('jsonwebtoken');
 
 process.env.JWT_SECRET = 'test-secret';
@@ -10,22 +10,48 @@ const mockSchools = [
   { id: 1, name: 'Escola Teste', city: 'Cornélio Procópio', state: 'PR', address: 'Rua A', phone: null, responsible: null, active: true, createdAt: new Date(), updatedAt: new Date(), _count: { forms: 2 } },
 ];
 
-jest.mock('@prisma/client', () => ({
-  PrismaClient: jest.fn().mockImplementation(() => ({
-    user: {
-      findUnique: jest.fn().mockResolvedValue({ id: 1, name: 'Admin', email: 'admin@test.com', role: 'ADMIN', active: true }),
+jest.mock('@prisma/client', () => {
+  const mockSchools = [
+    {
+      id: 1,
+      name: 'Escola Teste',
+      city: 'Cornélio Procópio',
+      state: 'PR',
+      address: 'Rua A',
+      phone: null,
+      responsible: null,
+      active: true,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      _count: { forms: 2 },
     },
-    school: {
-      findMany: jest.fn().mockResolvedValue(mockSchools),
-      findUnique: jest.fn().mockResolvedValue(mockSchools[0]),
-      count: jest.fn().mockResolvedValue(1),
-      create: jest.fn().mockResolvedValue(mockSchools[0]),
-      update: jest.fn().mockResolvedValue(mockSchools[0]),
-    },
-    log: { create: jest.fn().mockResolvedValue({}) },
-    $disconnect: jest.fn(),
-  })),
-}));
+  ];
+
+  return {
+    PrismaClient: jest.fn().mockImplementation(() => ({
+      user: {
+        findUnique: jest.fn().mockResolvedValue({
+          id: 1,
+          name: 'Admin',
+          email: 'admin@test.com',
+          role: 'ADMIN',
+          active: true,
+        }),
+      },
+      school: {
+        findMany: jest.fn().mockResolvedValue(mockSchools),
+        findUnique: jest.fn().mockResolvedValue(mockSchools[0]),
+        count: jest.fn().mockResolvedValue(1),
+        create: jest.fn().mockResolvedValue(mockSchools[0]),
+        update: jest.fn().mockResolvedValue(mockSchools[0]),
+      },
+      log: {
+        create: jest.fn().mockResolvedValue({}),
+      },
+      $disconnect: jest.fn(),
+    })),
+  };
+});
 
 describe('School Routes', () => {
   it('GET /api/schools - should return schools list', async () => {

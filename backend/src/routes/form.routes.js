@@ -10,7 +10,6 @@ const formValidation = [
   body('residents').isInt({ min: 1 }).withMessage('Número de moradores deve ser pelo menos 1'),
 ];
 
-// Public route for anonymous form submission
 router.post('/public', formValidation, create);
 
 router.get('/', authenticate, getAll);
