@@ -27,64 +27,9 @@ Desenvolver uma solução computacional capaz de coletar, armazenar e analisar i
 
 ---
 
-## 🧩 4. Fluxo Geral de Operação
+## 📋 4. Requisitos
 
-### 🔐 Autenticação
-- Usuários autorizados realizam login no sistema  
-- O acesso é controlado por níveis de permissão (ex: administrador, voluntário)  
-
----
-
-### 🏫 Cadastro de Escolas
-- Administradores podem cadastrar, editar, consultar e excluir escolas  
-- As escolas servem como referência para organização dos dados coletados  
-
----
-
-### 📝 Preenchimento do Formulário
-- O formulário socioeconômico é disponibilizado ao usuário  
-- O preenchimento pode ser:
-  - Anônimo  
-  - Identificado  
-- Os dados são validados antes do envio  
-
----
-
-### 💾 Persistência dos Dados
-- As respostas são armazenadas no banco de dados  
-- Garantindo integridade e consistência das informações  
-
----
-
-### 🔍 Gerenciamento e Consulta
-- Usuários autorizados podem visualizar os dados coletados  
-- O sistema permite aplicação de filtros por critérios específicos (ex: escola, renda)  
-
----
-
-### 📊 Análise de Dados
-- O sistema processa os dados e apresenta:
-  - Estatísticas  
-  - Indicadores  
-  - Visualizações gráficas  
-
----
-
-### 📤 Exportação
-- Os dados podem ser exportados em formatos estruturados (CSV/Excel)  
-- Facilitando análises externas  
-
----
-
-### 🧾 Auditoria e Controle
-- O sistema registra operações relevantes (logs)  
-- Garantindo rastreabilidade e controle de uso  
-
----
-
-## 📋 5. Requisitos
-
-### 5.1 Requisitos Funcionais
+### 4.1 Requisitos Funcionais
 
 | ID   | Requisito Funcional                                                                 | Prioridade |
 |------|-------------------------------------------------------------------------------------|------------|
@@ -104,37 +49,24 @@ Desenvolver uma solução computacional capaz de coletar, armazenar e analisar i
 
 ---
 
-### 5.2 Requisitos Não Funcionais
+## 🏗️ 5. Arquitetura do Sistema
 
-| ID    | Requisito Não Funcional                                   | Prioridade |
-|-------|-----------------------------------------------------------|------------|
-| RNF01 | Sistema acessível via navegador web;                      | 🔴 Alta    |
-| RNF02 | Interface simples e intuitiva;                            | 🟡 Média   |
-| RNF03 | Garantia de segurança e confidencialidade dos dados;      | 🔴 Alta    |
-| RNF04 | Suporte ao anonimato;                                     | 🟡 Média   |
-| RNF05 | Tempo de resposta adequado;                               | 🟡 Média   |
-| RNF06 | Arquitetura organizada em camadas;                        | 🔴 Alta    |
-| RNF07 | Código versionado e documentado;                          | 🔴 Alta    |
-| RNF08 | Implementação de testes automatizados;                    | 🔴 Alta    |
+### 5.1 Visão Geral
+
+O sistema utiliza arquitetura em camadas, separando responsabilidades entre:
+- Interface do usuário;
+- Regras de negócio;
+- Persistência de dados.
 
 ---
 
-## 🏗️ 6. Arquitetura do Sistema
-
-### 6.1 Visão Geral
-
-O sistema será desenvolvido utilizando arquitetura em camadas, separando responsabilidades entre interface, lógica de negócio e persistência de dados.
-
----
-
-### 6.2 Diagrama de Arquitetura
+### 5.2 Diagrama de Arquitetura
 
 ```bash
 [ Front-End ] ---> [ Back-End API ] ---> [ Banco de Dados ]
-(Substituir por diagrama gráfico posteriormente)
 ```
 
-### 6.3 Padrões Arquiteturais
+### 5.3 Padrões Arquiteturais
 
 - Arquitetura em Camadas  
 - Padrão REST  
@@ -142,117 +74,188 @@ O sistema será desenvolvido utilizando arquitetura em camadas, separando respon
 
 ---
 
-## 🗄️ 7. Modelo de Dados
+## 🗄️ 6. Modelo de Dados
 
-### 7.1 Entidades
-- Família  
-- Escola  
+### 6.1 Entidades
+- Usuário;
+- Escola;
+- Formulário Socioeconômico.
 
-### 7.2 Relacionamentos
-- Uma família pode estar associada a uma escola  
-
-### 7.3 Diagrama ER (DER)
-
-*(Inserir diagrama ER aqui)*
-
+### 6.2 Relacionamentos
+- Uma escola pode possuir vários formulários associados;
+- Um formulário pode estar associado a uma escola.
 ---
 
-## 💻 8. Tecnologias Utilizadas
+## 💻 7. Tecnologias Utilizadas
 
 ### Front-End
 
-React.js
-HTML5
-CSS3
-Tailwind CSS (avaliar)
-
-### Back-End
-- Node.js com Express  
-
-### Banco de Dados
-- PostgreSQL  ou MongoDB
-
-### Ferramentas
-- GitHub
-- GitHub Projects  
+- React.js;
+- Vite;
+- HTML5;
+- CSS3;
+- Tailwind CSS.
 
 ---
 
-## 🧪 9. Estratégia de Testes
+## Back-End
 
-### 9.1 Tipos de Teste
-- Testes Unitários  
-- Testes de Integração  
-- Testes End-to-End  
-
-### 9.2 Ferramentas
-- Jest  
-- Supertest  
-
-### 9.3 Cobertura de Testes
-- Meta mínima de 70% de cobertura  
+- Node.js;
+- Express.js.
 
 ---
 
-## 📊 10. Gerenciamento do Projeto
+## Banco de Dados
 
-### 10.1 Metodologia
-- Scrum (2 Sprints)  
+- PostgreSQL;
+- Prisma ORM.
 
-### 10.2 Organização do Backlog
+---
+
+## Ferramentas
+
+- GitHub;
+- GitHub Projects;
+- Postman.
+
+---
+
+## 🧪 8. Estratégia de Testes
+
+### 8.1 Tipos de Teste
+
+- Testes Unitários;
+- Testes de Integração. 
+
+---
+
+### 8.2 Ferramentas
+
+- Jest;
+- Supertest.
+
+---
+
+## 📊 9. Gerenciamento do Projeto
+
+### 9.1 Metodologia
+
+- Scrum;
+- Organização por Sprints.  
+
+---
+
+### 9.2 Organização do Backlog
+
 - Funcionalidades organizadas como Issues no GitHub  
 
-### 10.3 Kanban
+---
+
+### 9.3 Kanban
 *(https://github.com/orgs/CGKL-Oficina-2/projects/1)*
 
 ---
 
-## 📅 11. Cronograma Detalhado
+# 📅 10. Planejamento da Sprint 1
 
+## 📌 Entrega da Sprint 1 — 15/05
+
+### Funcionalidades previstas:
+- Autenticação de usuários;
+- Cadastro e gerenciamento de escolas;
+- Formulário socioeconômico;
+- Integração com banco de dados;
+- Estrutura inicial do sistema funcional.
+
+# 📅 Cronograma Semanal de Desenvolvimento
+
+## 📌 Semana 1 — Estudos e Planejamento (13/04 a 26/04)
+
+- Levantamento inicial dos requisitos do sistema;
+- Estudos sobre React, Node.js, Prisma e PostgreSQL;
+- Pesquisa sobre arquitetura MVC e APIs REST;
+- Organização do repositório GitHub e Kanban;
+- Estudos sobre autenticação JWT e testes automatizados.
 
 ---
 
-## 🗂️ 12. Estrutura do Repositório
+## 🚧 Semana 2 — Estruturação do Projeto (27/04 a 03/05)
+
+- Configuração inicial do frontend e backend;
+- Configuração do banco de dados PostgreSQL;
+- Estruturação do Prisma ORM;
+- Definição das entidades do sistema;
+- Organização das branches e padronização de commits.
+
+---
+
+## 🔐 Semana 3 — Desenvolvimento da Sprint 1 (04/05 a 15/05)
+
+- Implementação da autenticação JWT;
+- Desenvolvimento da tela de login;
+- Criação do CRUD de escolas;
+- Desenvolvimento do formulário socioeconômico;
+- Integração frontend/backend;
+- Persistência dos dados no banco;
+- Validações básicas dos formulários;
+- Ajustes visuais iniciais;
+- Testes básicos do sistema;
+- Revisão da documentação.
+
+---
+
+## 🗂️ 11. Estrutura do Repositório
 
 ```bash
-project-root/
+SISTEMA-SOCIOECONOMICO-FAMILIAR/
 │
-├── frontend/      # Interface do usuário
-├── backend/       # API e regras de negócio
-├── database/      # Scripts e modelos de dados
-├── tests/         # Testes automatizados
-├── docs/          # Documentação adicional
+├── backend/
+│   ├── prisma/          
+│   │   └── migrations/
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── middleware/
+│   │   ├── routes/
+│   │   └── tests/
+│   │   
+│
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── pages/
+│   │   └── services/
+│
+├── .gitignore
 └── README.md
 ```
 ---
 
-## ⚙️ 13. Configuração do Ambiente
+# ⚙️ 12. Configuração do Ambiente
+
+## Backend
 
 ```bash
-# Instalar dependências
+cd backend
 npm install
-
-# Configurar variáveis de ambiente
-cp .env.example .env
-
-# Executar o projeto
-npm start
+npm run dev
 ```
+
 ---
 
-## 🚀 14. Execução do Projeto
+## Frontend
 
 ```bash
-# Executar backend
+cd frontend
+npm install
 npm run dev
-
-# Executar frontend
-npm start
 ```
+
 ---
 
-## 📌 15. Considerações Finais
 
-Este projeto integra conhecimentos adquiridos ao longo do curso de Engenharia de Software, aplicando práticas modernas de desenvolvimento em um contexto real de impacto social.
+# 📌 13. Considerações Finais
 
-A proposta busca não apenas atender aos requisitos acadêmicos, mas também contribuir efetivamente para a melhoria das ações do projeto de extensão ELLP.
+O projeto busca aplicar conceitos de Engenharia de Software em um contexto real de impacto social, utilizando práticas modernas de desenvolvimento web, versionamento, organização em camadas e integração entre frontend, backend e banco de dados.
+
+A Sprint 1 possui foco na construção da base estrutural do sistema, garantindo uma arquitetura sólida para evolução futura das funcionalidades.
