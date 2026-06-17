@@ -12,6 +12,15 @@ enum Role {
   VOLUNTARIO
 }
 
+enum LogAction {
+  LOGIN
+  LOGOUT
+  CREATE
+  UPDATE
+  DELETE
+  EXPORT
+}
+
 model User {
   id        Int      @id @default(autoincrement())
   name      String
@@ -21,6 +30,8 @@ model User {
   active    Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  logs Log[]
 
   @@map("users")
 }
@@ -63,4 +74,20 @@ model SocioeconomicForm {
   school School? @relation(fields: [schoolId], references: [id])
 
   @@map("socioeconomic_forms")
+}
+
+model Log {
+  id         Int       @id @default(autoincrement())
+  userId     Int?
+  userName   String?
+  action     LogAction
+  resource   String
+  resourceId Int?
+  details    String?
+  ip         String?
+  createdAt  DateTime  @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@map("logs")
 }
