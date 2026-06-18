@@ -1,5 +1,6 @@
 const { PrismaClient } = require('@prisma/client');
 const { validationResult } = require('express-validator');
+const { createLog, getClientIp } = require('../services/log.service');
 
 const prisma = new PrismaClient();
 
@@ -75,6 +76,18 @@ const create = async (req, res) => {
 
     const form = await prisma.socioeconomicForm.create({ data });
 
+    if (req.user) {
+      await createLog({
+        userId: req.user.id,
+        userName: req.user.name,
+        action: 'CREATE',
+        resource: 'form',
+        resourceId: form.id,
+        ip: getClientIp(req),
+        details: `Formulário #${form.id} criado`,
+      });
+    }
+
     res.status(201).json(form);
   } catch (error) {
     console.error(error);
@@ -98,6 +111,16 @@ const update = async (req, res) => {
 
     const form = await prisma.socioeconomicForm.update({ where: { id }, data });
 
+    await createLog({
+      userId: req.user.id,
+      userName: req.user.name,
+      action: 'UPDATE',
+      resource: 'form',
+      resourceId: form.id,
+      ip: getClientIp(req),
+      details: `Formulário #${form.id} atualizado`,
+    });
+
     res.json(form);
   } catch (error) {
     res.status(500).json({ error: 'Erro ao atualizar formulário' });
@@ -111,6 +134,16 @@ const remove = async (req, res) => {
     if (!existing) return res.status(404).json({ error: 'Formulário não encontrado' });
 
     await prisma.socioeconomicForm.delete({ where: { id } });
+
+    await createLog({
+      userId: req.user.id,
+      userName: req.user.name,
+      action: 'DELETE',
+      resource: 'form',
+      resourceId: id,
+      ip: getClientIp(req),
+      details: `Formulário #${id} removido`,
+    });
 
     res.json({ message: 'Formulário removido com sucesso' });
   } catch (error) {
