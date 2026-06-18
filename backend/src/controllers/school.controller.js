@@ -1,5 +1,6 @@
 const { PrismaClient } = require('@prisma/client');
 const { validationResult } = require('express-validator');
+const { createLog, getClientIp } = require('../services/log.service');
 
 const prisma = new PrismaClient();
 
@@ -63,6 +64,17 @@ const create = async (req, res) => {
 
   try {
     const school = await prisma.school.create({ data: req.body });
+
+    await createLog({
+      userId: req.user.id,
+      userName: req.user.name,
+      action: 'CREATE',
+      resource: 'school',
+      resourceId: school.id,
+      ip: getClientIp(req),
+      details: `Escola "${school.name}" criada`,
+    });
+
     res.status(201).json(school);
   } catch (error) {
     res.status(500).json({ error: 'Erro ao criar escola' });
@@ -80,6 +92,16 @@ const update = async (req, res) => {
 
     const school = await prisma.school.update({ where: { id }, data: req.body });
 
+    await createLog({
+      userId: req.user.id,
+      userName: req.user.name,
+      action: 'UPDATE',
+      resource: 'school',
+      resourceId: school.id,
+      ip: getClientIp(req),
+      details: `Escola "${school.name}" atualizada`,
+    });
+
     res.json(school);
   } catch (error) {
     res.status(500).json({ error: 'Erro ao atualizar escola' });
@@ -93,6 +115,16 @@ const remove = async (req, res) => {
     if (!existing) return res.status(404).json({ error: 'Escola não encontrada' });
 
     await prisma.school.update({ where: { id }, data: { active: false } });
+
+    await createLog({
+      userId: req.user.id,
+      userName: req.user.name,
+      action: 'DELETE',
+      resource: 'school',
+      resourceId: id,
+      ip: getClientIp(req),
+      details: `Escola "${existing.name}" removida`,
+    });
 
     res.json({ message: 'Escola removida com sucesso' });
   } catch (error) {
