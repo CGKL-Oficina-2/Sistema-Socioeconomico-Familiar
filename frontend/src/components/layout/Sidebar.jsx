@@ -6,8 +6,11 @@ import {
 } from 'lucide-react'
 
 const navItems = [
+  { to: '/', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/escolas', label: 'Escolas', icon: School },
   { to: '/formularios', label: 'Formulários', icon: FileText },
+  { to: '/relatorios', label: 'Relatórios', icon: BarChart2 },
+  { to: '/logs', label: 'Logs', icon: ClipboardList, adminOnly: true },
   { to: '/usuarios', label: 'Usuários', icon: Users, adminOnly: true },
 ]
 
