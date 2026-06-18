@@ -3,10 +3,13 @@ import { Toaster } from 'react-hot-toast'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import Layout from './components/layout/Layout'
 import Login from './pages/Login'
+import Dashboard from './pages/Dashboard'
 import Schools from './pages/Schools'
 import Forms from './pages/Forms'
 import FormCreate from './pages/FormCreate'
 import FormPublic from './pages/FormPublic'
+import Reports from './pages/Reports'
+import Logs from './pages/Logs'
 import Users from './pages/Users'
 import NotFound from './pages/NotFound'
 
@@ -34,10 +37,13 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/formulario-publico" element={<FormPublic />} />
           <Route path="/" element={<ProtectedRoute><Layout /></ProtectedRoute>}>
+            <Route index element={<Dashboard />} />
             <Route path="escolas" element={<Schools />} />
             <Route path="formularios" element={<Forms />} />
             <Route path="formularios/novo" element={<FormCreate />} />
             <Route path="formularios/:id/editar" element={<FormCreate />} />
+            <Route path="relatorios" element={<Reports />} />
+            <Route path="logs" element={<ProtectedRoute adminOnly><Logs /></ProtectedRoute>} />
             <Route path="usuarios" element={<ProtectedRoute adminOnly><Users /></ProtectedRoute>} />
           </Route>
           <Route path="*" element={<NotFound />} />
