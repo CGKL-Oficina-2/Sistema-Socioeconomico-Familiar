@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { PrismaClient } = require('@prisma/client');
 const { validationResult } = require('express-validator');
+const { createLog, getClientIp } = require('../services/log.service');
 
 const prisma = new PrismaClient();
 
@@ -31,6 +32,14 @@ const login = async (req, res) => {
       { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
     );
 
+    await createLog({
+      userId: user.id,
+      userName: user.name,
+      action: 'LOGIN',
+      resource: 'auth',
+      ip: getClientIp(req),
+      details: `Login realizado por ${user.email}`,
+    });
 
     res.json({
       token,
