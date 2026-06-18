@@ -70,12 +70,12 @@ async function main() {
 
   const createdSchools = await prisma.school.findMany();
   const sampleForms = [
-    { anonymous: false, responsibleName: 'Carlos Ferreira', cpf: '123.456.789-00', phone: '(43) 99999-1111', email: 'carlos@email.com', schoolId: createdSchools[0]?.id, familyIncome: 1500, residents: 4, internetAccess: true, computerAccess: false, govAssistance: true, govAssistanceType: 'Bolsa Família' },
-    { anonymous: false, responsibleName: 'Fernanda Lima', cpf: '987.654.321-00', phone: '(43) 99999-2222', email: 'fernanda@email.com', schoolId: createdSchools[0]?.id, familyIncome: 2200, residents: 3, internetAccess: true, computerAccess: true, govAssistance: false },
+    { anonymous: false, responsibleName: 'Carlos Eduardo', cpf: '123.456.789-00', phone: '(43) 99999-1111', email: 'carlos@email.com', schoolId: createdSchools[0]?.id, familyIncome: 1500, residents: 4, internetAccess: true, computerAccess: false, govAssistance: true, govAssistanceType: 'Bolsa Família' },
+    { anonymous: false, responsibleName: 'Gabriel Sarti', cpf: '987.654.321-00', phone: '(43) 99999-2222', email: 'gabriel@email.com', schoolId: createdSchools[0]?.id, familyIncome: 2200, residents: 3, internetAccess: true, computerAccess: true, govAssistance: false },
     { anonymous: true, schoolId: createdSchools[1]?.id, familyIncome: 800, residents: 5, internetAccess: false, computerAccess: false, govAssistance: true, govAssistanceType: 'BPC' },
-    { anonymous: false, responsibleName: 'Roberto Alves', cpf: '111.222.333-44', phone: '(43) 99999-3333', schoolId: createdSchools[1]?.id, familyIncome: 3000, residents: 2, internetAccess: true, computerAccess: true, govAssistance: false },
+    { anonymous: false, responsibleName: 'Kauan Pedreira', cpf: '111.222.333-44', phone: '(43) 99999-3333', schoolId: createdSchools[1]?.id, familyIncome: 3000, residents: 2, internetAccess: true, computerAccess: true, govAssistance: false },
     { anonymous: true, schoolId: createdSchools[2]?.id, familyIncome: 1200, residents: 6, internetAccess: false, computerAccess: false, govAssistance: true, govAssistanceType: 'Bolsa Família' },
-    { anonymous: false, responsibleName: 'Lucia Martins', cpf: '555.666.777-88', phone: '(43) 99999-4444', schoolId: createdSchools[2]?.id, familyIncome: 1800, residents: 3, internetAccess: true, computerAccess: false, govAssistance: false },
+    { anonymous: false, responsibleName: 'Luccas Hessel', cpf: '555.666.777-88', phone: '(43) 99999-4444', schoolId: createdSchools[2]?.id, familyIncome: 1800, residents: 3, internetAccess: true, computerAccess: false, govAssistance: false },
   ];
 
   for (const form of sampleForms) {
