@@ -1,6 +1,7 @@
 const { PrismaClient } = require('@prisma/client');
 const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
+const { createLog, getClientIp } = require('../services/log.service');
 
 const prisma = new PrismaClient();
 
@@ -31,7 +32,15 @@ const create = async (req, res) => {
       select: { id: true, name: true, email: true, role: true, active: true, createdAt: true },
     });
 
-
+    await createLog({
+      userId: req.user.id,
+      userName: req.user.name,
+      action: 'CREATE',
+      resource: 'user',
+      resourceId: user.id,
+      ip: getClientIp(req),
+      details: `Usuário "${user.name}" criado`,
+    });
 
     res.status(201).json(user);
   } catch (error) {
@@ -53,6 +62,16 @@ const update = async (req, res) => {
       select: { id: true, name: true, email: true, role: true, active: true },
     });
 
+    await createLog({
+      userId: req.user.id,
+      userName: req.user.name,
+      action: 'UPDATE',
+      resource: 'user',
+      resourceId: id,
+      ip: getClientIp(req),
+      details: `Usuário "${user.name}" atualizado`,
+    });
+
     res.json(user);
   } catch (error) {
     res.status(500).json({ error: 'Erro ao atualizar usuário' });
@@ -68,6 +87,16 @@ const remove = async (req, res) => {
     if (!user) return res.status(404).json({ error: 'Usuário não encontrado' });
 
     await prisma.user.update({ where: { id }, data: { active: false } });
+
+    await createLog({
+      userId: req.user.id,
+      userName: req.user.name,
+      action: 'DELETE',
+      resource: 'user',
+      resourceId: id,
+      ip: getClientIp(req),
+      details: `Usuário "${user.name}" desativado`,
+    });
 
     res.json({ message: 'Usuário desativado com sucesso' });
   } catch (error) {
