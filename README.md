@@ -156,79 +156,109 @@ O sistema utiliza arquitetura em camadas, separando responsabilidades entre:
 
 ---
 
-# 📅 10. Planejamento da Sprint 1
+## 📅 10 Cronograma Semanal de Desenvolvimento
 
-## 📌 Entrega da Sprint 1 — 15/05
-
-### Funcionalidades previstas:
-- Autenticação de usuários;
-- Cadastro e gerenciamento de escolas;
-- Formulário socioeconômico;
-- Integração com banco de dados;
-- Estrutura inicial do sistema funcional.
-
-# 📅 Cronograma Semanal de Desenvolvimento
-
-## 📌 Semana 1 — Estudos e Planejamento (13/04 a 26/04)
-
-- Levantamento inicial dos requisitos do sistema;
-- Estudos sobre React, Node.js, Prisma e PostgreSQL;
-- Pesquisa sobre arquitetura MVC e APIs REST;
-- Organização do repositório GitHub e Kanban;
-- Estudos sobre autenticação JWT e testes automatizados.
-
----
-
-## 🚧 Semana 2 — Estruturação do Projeto (27/04 a 03/05)
-
-- Configuração inicial do frontend e backend;
-- Configuração do banco de dados PostgreSQL;
-- Estruturação do Prisma ORM;
-- Definição das entidades do sistema;
-- Organização das branches e padronização de commits.
-
----
-
-## 🔐 Semana 3 — Desenvolvimento da Sprint 1 (04/05 a 15/05)
-
-- Implementação da autenticação JWT;
-- Desenvolvimento da tela de login;
-- Criação do CRUD de escolas;
-- Desenvolvimento do formulário socioeconômico;
-- Integração frontend/backend;
-- Persistência dos dados no banco;
-- Validações básicas dos formulários;
-- Ajustes visuais iniciais;
-- Testes básicos do sistema;
-- Revisão da documentação.
+| Período | Etapa | Atividades Desenvolvidas |
+|---|---|---|
+| **13/04 a 26/04** | 📌 Estudos e Planejamento | Levantamento inicial dos requisitos; estudos sobre React, Node.js, Prisma e PostgreSQL; pesquisa sobre arquitetura MVC e APIs REST; organização do repositório GitHub e Kanban; estudos sobre autenticação JWT e testes automatizados. |
+| **27/04 a 03/05** | 🚧 Estruturação do Projeto | Configuração inicial do frontend e backend; configuração do banco de dados PostgreSQL; estruturação do Prisma ORM; definição das entidades do sistema; organização das branches e padronização de commits. |
+| **04/05 a 15/05** | 🔐 Desenvolvimento da Sprint 1 | Implementação da autenticação JWT; desenvolvimento da tela de login; criação do CRUD de escolas; desenvolvimento do formulário socioeconômico; integração frontend/backend; persistência dos dados no banco; validações básicas; ajustes visuais iniciais; testes básicos e revisão da documentação. |
+| **16/05 a 16/06** | 🛠️ Ajustes e Refinamentos | Correções de bugs; melhoria da interface; revisão de controllers e rotas; ajustes no banco de dados; organização do código; melhoria da documentação e preparação para a Sprint 2. |
+| **17/06 a 18/06** | 📊 Desenvolvimento da Sprint 2 | Implementação do dashboard; criação do sistema de logs; desenvolvimento dos relatórios; atualização das rotas backend; criação das novas telas no frontend; atualização da navegação e integração das funcionalidades. |
+| **19/06** | ✅ Entrega da Sprint 2 | Testes finais; validação do fluxo completo; revisão da integração entre frontend, backend e banco de dados; ajustes finais e apresentação da entrega. |
+|
 
 ---
 
 ## 🗂️ 11. Estrutura do Repositório
 
-```bash
+```text
 SISTEMA-SOCIOECONOMICO-FAMILIAR/
 │
 ├── backend/
-│   ├── prisma/          
-│   │   └── migrations/
+│   ├── prisma/
+│   │   ├── migrations/
+│   │   ├── schema.prisma
+│   │   └── seed.js
+│   │
 │   ├── src/
 │   │   ├── controllers/
+│   │   │   ├── auth.controller.js
+│   │   │   ├── dashboard.controller.js
+│   │   │   ├── form.controller.js
+│   │   │   ├── log.controller.js
+│   │   │   ├── report.controller.js
+│   │   │   ├── school.controller.js
+│   │   │   └── user.controller.js
+│   │   │
 │   │   ├── middleware/
+│   │   │   └── auth.middleware.js
+│   │   │
 │   │   ├── routes/
-│   │   └── tests/
-│   │   
+│   │   │   ├── auth.routes.js
+│   │   │   ├── dashboard.routes.js
+│   │   │   ├── form.routes.js
+│   │   │   ├── log.routes.js
+│   │   │   ├── report.routes.js
+│   │   │   ├── school.routes.js
+│   │   │   └── user.routes.js
+│   │   │
+│   │   ├── services/
+│   │   │   └── log.service.js
+│   │   │
+│   │   ├── tests/
+│   │   │   ├── auth.test.js
+│   │   │   └── school.test.js
+│   │   │
+│   │   ├── app.js
+│   │   └── server.js
+│   │
+│   ├── .env.example
+│   ├── package.json
+│   └── package-lock.json
 │
 ├── frontend/
 │   ├── src/
 │   │   ├── components/
+│   │   │   ├── layout/
+│   │   │   │   ├── Header.jsx
+│   │   │   │   ├── Layout.jsx
+│   │   │   │   └── Sidebar.jsx
+│   │   │   │
+│   │   │   └── ui/
+│   │   │       └── index.jsx
+│   │   │
 │   │   ├── context/
+│   │   │   └── AuthContext.jsx
+│   │   │
 │   │   ├── pages/
-│   │   └── services/
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── FormCreate.jsx
+│   │   │   ├── FormPublic.jsx
+│   │   │   ├── Forms.jsx
+│   │   │   ├── Login.jsx
+│   │   │   ├── Logs.jsx
+│   │   │   ├── NotFound.jsx
+│   │   │   ├── Reports.jsx
+│   │   │   ├── Schools.jsx
+│   │   │   └── Users.jsx
+│   │   │
+│   │   ├── services/
+│   │   │   └── api.js
+│   │   │
+│   │   ├── App.jsx
+│   │   ├── index.css
+│   │   └── main.jsx
+│   │
+│   ├── .env.example
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── postcss.config.js
+│   └── vite.config.js
 │
 ├── .gitignore
 └── README.md
-```
 ---
 
 # ⚙️ 12. Configuração do Ambiente
