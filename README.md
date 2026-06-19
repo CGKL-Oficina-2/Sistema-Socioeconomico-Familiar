@@ -166,7 +166,6 @@ O sistema utiliza arquitetura em camadas, separando responsabilidades entre:
 | **16/05 a 16/06** | 🛠️ Ajustes e Refinamentos | Correções de bugs; melhoria da interface; revisão de controllers e rotas; ajustes no banco de dados; organização do código; melhoria da documentação e preparação para a Sprint 2. |
 | **17/06 a 18/06** | 📊 Desenvolvimento da Sprint 2 | Implementação do dashboard; criação do sistema de logs; desenvolvimento dos relatórios; atualização das rotas backend; criação das novas telas no frontend; atualização da navegação e integração das funcionalidades. |
 | **19/06** | ✅ Entrega da Sprint 2 | Testes finais; validação do fluxo completo; revisão da integração entre frontend, backend e banco de dados; ajustes finais e apresentação da entrega. |
-|
 
 ---
 
@@ -261,6 +260,7 @@ SISTEMA-SOCIOECONOMICO-FAMILIAR/
 └── README.md
 ---
 
+---
 # ⚙️ 12. Configuração do Ambiente
 
 ## Backend
